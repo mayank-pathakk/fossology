@@ -783,7 +783,9 @@ class UploadControllerTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($expectedResponse->getStatusCode(),
       $actualResponse->getStatusCode());
     $this->assertEquals($this->getResponseJson($expectedResponse),
-      $this->getResponseJson($actualResponse));
+      $this->getResponseJson($actualResponse)[0]);
+    $this->assertEquals('1',
+      $actualResponse->getHeaderLine('X-Total-Pages'));
   }
 
   /**
